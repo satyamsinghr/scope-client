@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Logo from '../../assets/images/logo.png';
@@ -8,6 +9,7 @@ import { loginSchema } from '../../schemas/auth';
 type LoginFormInputs = z.infer<typeof loginSchema>;
 
 const Login = () => {
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,

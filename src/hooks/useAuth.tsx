@@ -2,10 +2,10 @@ import { useMsal } from "@azure/msal-react";
 import { toast } from 'react-toastify';
 import axiosInstance from '../utils/axiosConfig';
 import { useEffect } from 'react';
-
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 export const useAuth = () => {
     const { instance } = useMsal();
-
+    const navigate = useNavigate();
     useEffect(() => {
         instance.handleRedirectPromise()
             .then(response => {
@@ -34,6 +34,7 @@ export const useAuth = () => {
                 if (userData) {
                     localStorage.setItem('userData', userData)
                     toast.success('Login successfully');
+                    navigate('/dashboard');
                 }
             })
             .catch(error => {

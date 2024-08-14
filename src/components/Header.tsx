@@ -1,13 +1,9 @@
-import React from 'react';
-import userImg from '../../assets/images/userImg.png'
-interface HeaderProps {
-  onLogout: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ onLogout }) => {
+import React from 'react'
+import userImg from '../assets/images/userImg.png';
+const Header = () => {
   return (
     <>
-         <header className="pb-3 DashboardHeader">
+    <header className="pb-3 DashboardHeader">
                         <div className="row">
                             <div className="col-lg-6 col-md-6 col-sm-4 col-4 d-flex align-items-center">
                                 <div className="pageTitle">
@@ -35,7 +31,7 @@ const Header: React.FC<HeaderProps> = ({ onLogout }) => {
                                     <img src={userImg} alt="" />
                                     <h4 className="d-lg-block d-md-block d-sm-block d-none">Hanna Ekstrom Bothman</h4>
                                 </div>
-                                <div className="logOut" onClick={onLogout} style={{cursor:'pointer'}}>
+                                <div className="logOut">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25"
                                         fill="none">
                                         <path
@@ -47,8 +43,8 @@ const Header: React.FC<HeaderProps> = ({ onLogout }) => {
                             </div>
                         </div>
                     </header>
-    </>
-  );
-};
+                    </>
+  )
+}
 
-export default Header;
+export default Header
