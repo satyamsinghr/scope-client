@@ -1,14 +1,9 @@
-import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Logo from '../../assets/images/logo.png';
-import axiosInstance from '../../utils/axiosConfig';
-import { useMsal } from "@azure/msal-react";
-const loginSchema = z.object({
-    username: z.string().min(1, 'Username is required'),
-    password: z.string().min(6, 'Password must be at least 6 characters'),
-});
+import { useAuth } from '../../hooks/useAuth';
+import { loginSchema } from '../../schemas/auth';
 
 type LoginFormInputs = z.infer<typeof loginSchema>;
 
@@ -20,46 +15,16 @@ const Login = () => {
     } = useForm<LoginFormInputs>({
         resolver: zodResolver(loginSchema),
     });
-    const { instance } = useMsal();
+
+    const { handleLogin } = useAuth();
 
     const onSubmit = (data: LoginFormInputs) => {
         console.log('Form Data:', data);
-        // Handle form submission here, e.g., send data to the server
+        // handleLogin();
     };
-    useEffect(() => {
-        instance.handleRedirectPromise()
-            .then(response => {
-                if (response) {
-                    console.log("Authentication response:", response);
-                } else {
-                    console.log("No response, check if the login flow was interrupted.");
-                }
-            })
-            .catch(error => {
-                console.error("Error handling redirect promise:", error);
-            });
-    }, [instance]);
 
-    const handleLogin = () => {
-        const request = { //prod
-            scopes: ["openid", "profile", "email", "api://a4853eaf-9291-460f-a840-3048f4ec7165/Read.All"]
-        };
-        instance.loginPopup(request)
-            .then(response => {
-                // Capture and use the access token from the response
-                const accessToken = response.accessToken;
-                console.log("Access Token:", accessToken);
-                localStorage.setItem('token', accessToken)
-                authorizeToken(accessToken);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-
-
-    const authorizeToken = (token: string) => {
-
+    const handleSsoLogin = () => {
+        handleLogin();
     }
 
     return (
@@ -128,7 +93,7 @@ const Login = () => {
                                 </div>
                                 <button type="submit" className="btn btn-primary w-100">Log in</button>
                             </form>
-                            <button className="btn btn-primary" onClick={() => handleLogin()}>Sign in using SSO</button>
+                            <button className="btn btn-primary" onClick={() => handleSsoLogin()}>Sign in using SSO</button>
                         </div>
                     </div>
                 </div>
