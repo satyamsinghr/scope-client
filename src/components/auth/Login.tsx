@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -44,11 +44,23 @@ const Login = () => {
         const request = { //prod
             scopes: ["openid", "profile", "email", "api://a4853eaf-9291-460f-a840-3048f4ec7165/Read.All"]
         };
-            instance.loginRedirect(request).catch(e => {
-                console.error(e);
+        instance.loginPopup(request)
+            .then(response => {
+                // Capture and use the access token from the response
+                const accessToken = response.accessToken;
+                console.log("Access Token:", accessToken);
+                localStorage.setItem('token', accessToken)
+                authorizeToken(accessToken);
+            })
+            .catch(error => {
+                console.error(error);
             });
-    };
+    }
 
+
+    const authorizeToken = (token: string) => {
+
+    }
 
     return (
         <section className="login d-flex align-items-center justify-content-center">
@@ -117,7 +129,6 @@ const Login = () => {
                                 <button type="submit" className="btn btn-primary w-100">Log in</button>
                             </form>
                             <button className="btn btn-primary" onClick={() => handleLogin()}>Sign in using SSO</button>
-
                         </div>
                     </div>
                 </div>

@@ -2,8 +2,8 @@
 import axios from 'axios';
 // Create an Axios instance
 const axiosInstance = axios.create({
-  // baseURL: process.env.REACT_APP_BASE_API_URL_DEV || 'http://localhost:8000/api' , // local
-  baseURL: process.env.REACT_APP_BASE_API_URL || 'https://ze3qodht3h.execute-api.us-east-1.amazonaws.com/prod/api' , //Prod
+  baseURL: process.env.REACT_APP_BASE_API_URL_DEV || 'http://localhost:8000/api' , // local
+  // baseURL: process.env.REACT_APP_BASE_API_URL || 'https://ze3qodht3h.execute-api.us-east-1.amazonaws.com/prod/api' , //Prod
   timeout: 300000, // Set a timeout limit
   headers: {
     'Content-Type': 'application/json',
