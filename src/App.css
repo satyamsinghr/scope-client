@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  font-family: 'Proxima Nova Rg';
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  text-decoration: none;
 }
 
-.App-header {
-  background-color: #282c34;
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/*==== login page ui ====*/
+.login {
+  position: relative;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 64px 0;
+  overflow: hidden;
+  background-image: url(../src/assets/images/loginBg.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.App-link {
-  color: #61dafb;
+.LoginCard {
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.90);
+  box-shadow: 0px 64px 64px 0px rgba(18, 70, 123, 0.75);
+  backdrop-filter: blur(12px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.LoginCard h1 {
+  color: #000;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
+
+.LoginCard p {
+  color: #000;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 12px;
+}
+
+.iconInput input,
+.iconInput input:hover,
+.iconInput input:active,
+.iconInput input:focus {
+  height: 56px;
+  border-radius: 8px;
+  padding: 16px 16px 16px 48px;
+  border: 1px solid #242A30;
+  color: #242A30;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+  outline: none;
+  box-shadow: none;
+}
+
+.iconInput input::placeholder {
+  color: #242A30;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+.forgotPwd a {
+  color: #242A30;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+button.btn.btn-primary {
+  padding: 12.5px 32px;
+  border-radius: 8px;
+  background: #242A30;
+  box-shadow: 0px 16px 16px 0px rgba(73, 69, 79, 0.25);
+  border: none;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: #FCFCFC;
+}
+
+
+/*=== dashboard page ===*/
