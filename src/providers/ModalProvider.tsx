@@ -14,7 +14,6 @@ const ModalProvider: React.FC = () => {
 
     // You can use a dynamic import or conditional rendering to load modals
     // based on modalType and pass modalProps to them
-
     const renderModal = () => {
         switch (modalType) {
             case 'LOGIN':
