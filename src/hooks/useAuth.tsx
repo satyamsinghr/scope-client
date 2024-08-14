@@ -29,10 +29,10 @@ export const useAuth = () => {
                 // Capture and use the access token from the response
                 const accessToken = response.accessToken;
                 console.log("Access Token:", accessToken);
-                localStorage.setItem('token', accessToken)
                 const userData = await authorizeToken(accessToken);
                 if (userData) {
-                    localStorage.setItem('userData', userData)
+                    localStorage.setItem('token', accessToken)
+                    localStorage.setItem('userData', JSON.stringify(userData));
                     toast.success('Login successfully');
                     navigate('/dashboard');
                 }

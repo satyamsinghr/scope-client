@@ -7,8 +7,9 @@ import Header from './Header';
 import Dashboard from '../main/Dashboard';
 
 const Layout: React.FC = () => {
-  const tokenString = localStorage.getItem('token');
-  const userData = tokenString ? tokenString : null;
+    const userDataString = localStorage.getItem('userData');
+const userData = userDataString ? JSON.parse(userDataString) : null;
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -32,7 +33,7 @@ const Layout: React.FC = () => {
         <div className="DashboardRow row d-flex flex-lg-row flex-md-row flex-sm-column flex-column">
           <Sidebar />
           <div className="PageBody">
-            <Header onLogout={handleLogout} />
+           <Header onLogout={handleLogout} userData={userData} />
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" />} />
               <Route element={<ProtectedRoutes />}>
